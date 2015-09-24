@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package revisao;
+package observer;
 
-
-import java.util.Observer;
 import revisor.Pessoa;
 
 /**
  *
  * @author Ivan
  */
-public interface Subject extends Observer{
+public interface Subject{
     public void addObserver(Pessoa p);
     public void removeObserver(Pessoa p);
     public void notificarTodos();

@@ -6,21 +6,37 @@
 package facade;
 
 import revisao.Revisao;
-import revisor.Revisor;
+import revisor.Pessoa;
 
 /**
  *
  * @author Ivan
  */
-public class Facade extends Revisao {
-   
-   
-   @Override
-   public void iniciarRevisao(){
-       System.out.println("Iniciando Revisão pelo sistema de interface");
-       super.iniciarRevisao();
-       
-   }
-    
+public class Facade {
+
+    Revisao r;
+
+    public void addObserver(Pessoa p) {
+        r.addObserver(p);
+    }
+
+    public void removeObserver(Pessoa p) {
+        r.removeObserver(p);
+    }
+
+    public void notificarTodos() {
+        r.notificarTodos();
+    }
+
+    public Facade() {
+        ////this.r = r
+        r = new Revisao();
+    }
+
+    public void iniciarRevisao() {
+        System.out.println("Iniciando Revisão pelo sistema de interface");
+        r.iniciarRevisao();
+
+    }
 
 }

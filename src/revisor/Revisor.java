@@ -14,11 +14,21 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
  */
 public class Revisor extends Pessoa {
 
+    String name;
+
+    public Revisor(String name) {
+        this.name = name;
+    }
+    
+    
+    
     public Revisor() {
     }
 
+
+
     @Override
-    public void update(Observable o, Object arg) {
-        System.out.println("Atualizando Objeto"+ o.getClass()+".....");
+    public void notificar() {
+        System.out.println("Atualizando Objeto"+ this.name+".....");
     }
 }

@@ -6,7 +6,6 @@
 package revisao;
 
 import arquivo.ArquivoDoEstudo;
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Observable;
 import parametros.Criterios;
@@ -14,13 +13,14 @@ import parametros.Pergunta;
 import parametros.StringDeBusca;
 import revisor.Pessoa;
 import revisor.Revisor;
+import template.RevisaoPapers;
 import template.Template;
 
 /**
  *
  * @author Ivan
  */
-public class Revisao implements Subject {
+public class Revisao extends Template implements Subject  {
     Template t;
     Pergunta p;
     StringDeBusca st;
@@ -28,6 +28,10 @@ public class Revisao implements Subject {
     Pessoa editor;
     ArrayList<Pessoa> revisores;
     ArrayList<ArquivoDoEstudo> arquivos;
+
+    public Revisao() {
+        this.t = new RevisaoPapers();
+    }
     
     
     
@@ -44,7 +48,7 @@ public class Revisao implements Subject {
     @Override
     public void notificarTodos() {
         System.out.println("Notificando Todos os Observadores.....");
-        this.notifyAll();
+        
     }
 
     @Override
@@ -53,6 +57,7 @@ public class Revisao implements Subject {
     }
     
     public void iniciarRevisao(){
+        
         t.iniciarRevisao();
         t.inserirRevisor(new Revisor());
         t.definirPergunta();

@@ -5,23 +5,25 @@
  */
 package parametros;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ivan
  */
-public class StringDeBusca implements IParametros {
+public class PalavrasChave implements IParametros {
 
     int id;
-    String stringBusca;
+    ArrayList<String> listPalavras;
     
-    
-    public StringDeBusca() {
+    public PalavrasChave() {
+        listPalavras = new ArrayList<>();
     }
 
     @Override
     public void adicionarCriterios() {
-        //definir atribuicao da string
-    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     
 }

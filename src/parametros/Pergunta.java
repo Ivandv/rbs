@@ -10,7 +10,10 @@ package parametros;
  * @author Ivan
  */
 public class Pergunta implements IParametros{
-
+    
+    int id;
+    String pergunta;
+    
     @Override
     public void adicionarCriterios() {
         System.out.println("Inserido pergunta..............");

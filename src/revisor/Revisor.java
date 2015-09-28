@@ -5,30 +5,25 @@
  */
 package revisor;
 
-import java.util.Observable;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 /**
  *
  * @author Ivan
  */
 public class Revisor extends Pessoa {
 
-    String name;
+    String graduacao;
+    String instituicao;
 
+    
     public Revisor(String name) {
-        this.name = name;
+        this.nome = name;
     }
-    
-    
-    
+
     public Revisor() {
     }
-
-
-
+    
     @Override
     public void notificar() {
-        System.out.println("Atualizando Objeto"+ this.name+".....");
+        System.out.println("Atualizando Objeto" + this.nome + ".....");
     }
 }

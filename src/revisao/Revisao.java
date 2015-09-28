@@ -23,6 +23,7 @@ import observer.*;
  */
 public class Revisao implements Subject {
 
+    int id;
     Template t;
     Pergunta p;
     StringDeBusca st;
@@ -30,16 +31,21 @@ public class Revisao implements Subject {
     Pessoa editor;
     ArrayList<Pessoa> revisores = new ArrayList<>();
     ArrayList<ArquivoDoEstudo> arquivos;
+    ArrayList<ArquivoDoEstudo> arquivosAvaliados;
 
     public Revisao() {
         this.t = new RevisaoPapers();
     }
 
-    public void iniciarRevisao(){
+    public Revisao(Template t) {
+
+        this.t = t;
+    }
+
+    public void iniciarRevisao() {
         t.iniciarRevisao();
     }
-    
-    
+
     @Override
     public void addObserver(Pessoa p) {
         System.out.println("Inserindo novo " + p.getClass() + ".....");
@@ -58,13 +64,6 @@ public class Revisao implements Subject {
         for (Pessoa p : revisores) {
             p.notificar();
         }
-    }
-
-   
-
-    public Revisao(Template t) {
-
-        this.t = t;
     }
 
 }

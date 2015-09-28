@@ -5,7 +5,10 @@
  */
 package revisor;
 
+import java.util.Date;
 import observer.*;
+import sun.security.rsa.RSASignature;
+
 
 /**
  *
@@ -13,6 +16,27 @@ import observer.*;
  */
 public abstract class Pessoa implements Observer {
 
+    int id;
+    String nome;
+    String email;
+    String senha;
+    Date dataCriacao;
+    Date dataAcesso;
+
+    public Pessoa() {
+        dataAcesso = new Date();
+    }
+
+    public Pessoa(String nome, String email, String senha, Date dataAcesso) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.dataAcesso = dataAcesso;
+    }
+    
+    
+    
+    
     @Override
     public abstract void notificar();
     

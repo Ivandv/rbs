@@ -7,7 +7,6 @@ package revisor;
 
 import java.util.Date;
 import observer.*;
-import sun.security.rsa.RSASignature;
 
 
 /**
@@ -34,10 +33,58 @@ public abstract class Pessoa implements Observer {
         this.dataAcesso = dataAcesso;
     }
     
-    
-    
-    
     @Override
     public abstract void notificar();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Date getDataAcesso() {
+        return dataAcesso;
+    }
+
+    public void setDataAcesso(Date dataAcesso) {
+        this.dataAcesso = dataAcesso;
+    }
+
+    public boolean getSenha(String s) {
+        if (s.equals(this.senha) != true)
+            return false;
+        else
+            return true;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
     
 }

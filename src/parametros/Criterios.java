@@ -56,5 +56,30 @@ public class Criterios implements IParametros{
         else
             System.out.println("Este Critério não existe nesta base");
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<String> getInclusao() {
+        return inclusao;
+    }
+
+    public void setInclusao(ArrayList<String> inclusao) {
+        this.inclusao = inclusao;
+    }
+
+    public ArrayList<String> getExclusao() {
+        return exclusao;
+    }
+
+    public void setExclusao(ArrayList<String> exclusao) {
+        this.exclusao = exclusao;
+    }
+    
     
 }

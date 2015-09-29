@@ -10,5 +10,24 @@ package arquivo;
  * @author Ivan
  */
 public abstract class ArquivoDoEstudo {
+    int id;
+    String url;
+    String path;
+
+    public ArquivoDoEstudo() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getPath() {
+        return path;
+    }
+    
     
 }

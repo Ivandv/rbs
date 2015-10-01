@@ -13,37 +13,41 @@ import revisor.Pessoa;
  * @author Ivan
  */
 public abstract class AvaliacaoDoArquivo {
-    int id;
-    Pessoa avaliador;
-    ArquivoDoEstudo arquivoAvaliado;
+   private Pessoa primeiroRevisor; 
+   private ArquivoDoEstudo arquivo;
+   String status;
+   
+   public abstract void designar();
 
-    public AvaliacaoDoArquivo() {
+    public AvaliacaoDoArquivo(Pessoa primeiroRevisor, ArquivoDoEstudo arquivo, String status) {
+        this.primeiroRevisor = primeiroRevisor;
+        this.arquivo = arquivo;
+        this.status = status;
     }
 
-    public int getId() {
-        return id;
+    public Pessoa getPrimeiroRevisor() {
+        return primeiroRevisor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPrimeiroRevisor(Pessoa primeiroRevisor) {
+        this.primeiroRevisor = primeiroRevisor;
     }
 
-    public Pessoa getAvaliador() {
-        return avaliador;
+    public ArquivoDoEstudo getArquivo() {
+        return arquivo;
     }
 
-    public void setAvaliador(Pessoa avaliador) {
-        this.avaliador = avaliador;
+    public void setArquivo(ArquivoDoEstudo arquivo) {
+        this.arquivo = arquivo;
     }
 
-    public ArquivoDoEstudo getArquivoAvaliado() {
-        return arquivoAvaliado;
+    public String getStatus() {
+        return status;
     }
 
-    public void setArquivoAvaliado(ArquivoDoEstudo arquivoAvaliado) {
-        this.arquivoAvaliado = arquivoAvaliado;
+    public void setStatus(String status) {
+        this.status = status;
     }
-    
-    
-    public abstract void avaliarEstudo();
+   
+   
 }

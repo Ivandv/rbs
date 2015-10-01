@@ -5,7 +5,6 @@
  */
 package revisao;
 
-import arquivo.ArquivoDoEstudo;
 import avaliacao.AvaliacaoDoArquivo;
 import java.util.ArrayList;
 
@@ -16,6 +15,7 @@ import revisor.Pessoa;
 import template.RevisaoPapers;
 import template.Template;
 import observer.*;
+import revisor.Revisor;
 
 /**
  *
@@ -29,17 +29,31 @@ public class Revisao implements Subject {
     private StringDeBusca st;
     private ArrayList<Criterios> criterios;
     private Pessoa editor;
-    private ArrayList<Pessoa> revisores = new ArrayList<>();
-    private ArrayList<ArquivoDoEstudo> arquivos;
-    private ArrayList<AvaliacaoDoArquivo> arquivosAvaliados;
-
+    private ArrayList<AvaliacaoDoArquivo> avaliacao;
+    //verificar a necessidade de uma lista de revisores para notifica-los
+    
     public Revisao() {
         this.t = new RevisaoPapers();
         this.criterios = new ArrayList<>();
-        this.revisores = new ArrayList<>();
-        this.arquivos = new ArrayList<>();
-        this.arquivosAvaliados = new ArrayList<>();
-        //this.id  verificar incrementação do ID
+        this.avaliacao = new ArrayList<>();
+        //inseridos valores para tentar construir o fluxo da revisao
+        p = new Pergunta(1,"O Sentido da vida, do universo e tudo mais");
+        st = new StringDeBusca(1, "Sentido || Vida || UNIVERSO || Sentido do Universo || Sentido da Vida || Existencialismo || 42");
+        Criterios e1 = new Criterios();
+        e1.inserirInclusao("PDF");
+        e1.inserirExclusao("Não Ser uma Poesia Vogon");
+        e1.inserirExclusao("Ser antes da era da camisa de seda e corrente de prata");
+        criterios.add(e1);
+        String name = "Ford Prefect";
+        editor = new Revisor(name) {
+            
+            @Override
+            public void notificar() {
+                System.out.println("Aqui não há ninguém para notificar, cuidado com o leopardo!");
+            }
+        };
+        editor.notificar();
+        //até aqui
     }
 
     public Revisao(Template t) {
@@ -52,22 +66,18 @@ public class Revisao implements Subject {
 
     @Override
     public void addObserver(Pessoa p) {
-        System.out.println("Inserindo novo " + p.getClass() + ".....");
-        revisores.add(p);
+        System.out.println("Inserindo novo observador " +p.getNome()+ ".....");
+        
     }
-
     @Override
     public void removeObserver(Pessoa p) {
-        System.out.println("Removendo " + p.getClass() + "....");
-        revisores.remove(p);
+        System.out.println("Removendo " + p.getNome()+ "....");
+   
     }
 
     @Override
     public void notificarTodos() {
         System.out.println("Notificando Todos os Observadores.....");
-        for (Pessoa p : revisores) {
-            p.notificar();
-        }
     }
 
     public int getId() {
@@ -106,17 +116,6 @@ public class Revisao implements Subject {
         this.editor = editor;
     }
 
-    public ArrayList<Pessoa> getRevisores() {
-        return revisores;
-    }
-
-    public ArrayList<ArquivoDoEstudo> getArquivos() {
-        return arquivos;
-    }
-
-    public ArrayList<AvaliacaoDoArquivo> getArquivosAvaliados() {
-        return arquivosAvaliados;
-    }
 
     public boolean addCriterios(Criterios c) {
         try {
@@ -128,29 +127,12 @@ public class Revisao implements Subject {
         }
     }
 
-    public boolean addRevisores(Pessoa p) {
-        try {
-            this.revisores.add(p);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+    
 
-    public boolean addArquivos(ArquivoDoEstudo a) {
-        try {
-            this.arquivos.add(a);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
+    
     public boolean addAvaliacaoDeArquivo(AvaliacaoDoArquivo a) {
         try {
-            this.arquivosAvaliados.add(a);
+            this.avaliacao.add(a);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -167,31 +149,12 @@ public class Revisao implements Subject {
         return null;
     }
 
-    public Pessoa findByIdPessoa(int id) {
-        for (Pessoa pe : revisores) {
-            if (pe.getId() == id) {
-                return pe;
-            }
-        }
-        return null;
-    }
     
-    public ArquivoDoEstudo findByIdArquivo(int id){
-        for(ArquivoDoEstudo ade : arquivos){
-            if(ade.getId() == id){
-                return ade;
-            }
-        }
-        return null;
+    public void imprimeDados(){
+        System.out.println("Esta é a revisao de: "+ editor.getNome());
     }
+
     
-    public AvaliacaoDoArquivo findByIdAvaliacao(int id){
-        for (AvaliacaoDoArquivo ada : arquivosAvaliados ){
-            if(ada.getId() == id){
-                return ada;
-            }
-        }
-        return null;
-    }
+
     
 }

@@ -23,6 +23,11 @@ public class Main {
 
         f.addObserver(r);
         f.notificarTodos();
+        f.iniciarRevisao();
+        
+       
+        
+        
     }
 
 }

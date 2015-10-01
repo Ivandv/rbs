@@ -18,5 +18,15 @@ public class Pergunta implements IParametros{
     public void adicionarCriterios() {
         System.out.println("Inserido pergunta..............");
     }
+
+    public Pergunta() {
+    }
+
+    public Pergunta(int id, String pergunta) {
+        this.id = id;
+        this.pergunta = pergunta;
+    }
+    
+    
     
 }

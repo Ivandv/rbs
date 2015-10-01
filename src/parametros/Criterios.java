@@ -80,6 +80,19 @@ public class Criterios implements IParametros{
     public void setExclusao(ArrayList<String> exclusao) {
         this.exclusao = exclusao;
     }
+
+    public Criterios() {
+        inclusao = new ArrayList<>();
+        exclusao = new ArrayList<>();
+    }
+
+    public Criterios(int id) {
+        this.id = id;
+        inclusao = new ArrayList<>();
+        exclusao = new ArrayList<>();
+    }
+    
+    
     
     
 }

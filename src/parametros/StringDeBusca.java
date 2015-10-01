@@ -23,5 +23,11 @@ public class StringDeBusca implements IParametros {
         //definir atribuicao da string
     
     }
+
+    public StringDeBusca(int id, String stringBusca) {
+        this.id = id;
+        this.stringBusca = stringBusca;
+    }
+    
     
 }

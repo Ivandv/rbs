@@ -35,7 +35,10 @@ public class Facade {
 
     public void iniciarRevisao() {
         System.out.println("Iniciando Revisão pelo sistema de interface");
+        r = new Revisao();
         r.iniciarRevisao();
+        r.notificarTodos();
+        r.imprimeDados();
 
     }
 

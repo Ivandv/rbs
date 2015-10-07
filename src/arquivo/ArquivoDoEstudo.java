@@ -14,6 +14,20 @@ public abstract class ArquivoDoEstudo {
     String url;
     String path;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
+    
+
     public ArquivoDoEstudo() {
     }
 

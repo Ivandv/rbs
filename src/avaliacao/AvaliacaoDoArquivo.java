@@ -12,27 +12,25 @@ import revisor.Pessoa;
  *
  * @author Ivan
  */
-public abstract class AvaliacaoDoArquivo {
-   private Pessoa primeiroRevisor; 
+public  class AvaliacaoDoArquivo{
+   private Pessoa revisor; 
    private ArquivoDoEstudo arquivo;
-   String status;
-   
-   public abstract void designar();
+   private String status; 
 
-    public AvaliacaoDoArquivo(Pessoa primeiroRevisor, ArquivoDoEstudo arquivo, String status) {
-        this.primeiroRevisor = primeiroRevisor;
+    public AvaliacaoDoArquivo(Pessoa revisor, ArquivoDoEstudo arquivo, String status) {
+        this.revisor = revisor;
         this.arquivo = arquivo;
         this.status = status;
     }
 
-    public Pessoa getPrimeiroRevisor() {
-        return primeiroRevisor;
+    public Pessoa getRevisor() {
+        return revisor;
     }
 
-    public void setPrimeiroRevisor(Pessoa primeiroRevisor) {
-        this.primeiroRevisor = primeiroRevisor;
-    }
-
+    public void setRevisor(Pessoa revisor) {
+        this.revisor = revisor;
+    }  
+   
     public ArquivoDoEstudo getArquivo() {
         return arquivo;
     }
@@ -48,6 +46,13 @@ public abstract class AvaliacaoDoArquivo {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "AvaliacaoDoArquivo{" + "revisor=" + revisor.getNome() + ", arquivo=" + arquivo.getPath() + ", status=" + status + '}';
+    }
+    
+    
    
    
 }

@@ -5,8 +5,10 @@
  */
 package revisao;
 
+import arquivo.ArquivoDoEstudo;
 import avaliacao.AvaliacaoDoArquivo;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 import parametros.Criterios;
 import parametros.Pergunta;
@@ -31,6 +33,37 @@ public class Revisao implements Subject {
     private Pessoa editor;
     private ArrayList<AvaliacaoDoArquivo> avaliacao;
     private ArrayList<Pessoa> revisores; //verificar a necessidade de uma lista de revisores para notifica-los
+    
+    public void listarStatusTodasAvaliacoes(){
+        for (AvaliacaoDoArquivo a : avaliacao) {
+            System.out.println(a);
+        }
+    
+    }
+    
+    public String efetuarUmaAvaliacao(Pessoa revisor, ArquivoDoEstudo arquivo){
+        System.out.println("Meu querido avaliador " + revisor.getNome() 
+        + "\nQual sua avaliação quanto ao arquivo " + arquivo.getPath() + "?");
+        String st = JOptionPane.showInputDialog(null,"Informe avaliação: ");
+        return st;
+    }
+    
+    public void addAvaliacao(Pessoa revisor, ArquivoDoEstudo arquivo, String s){
+        AvaliacaoDoArquivo a = new AvaliacaoDoArquivo(revisor, arquivo, s);
+        avaliacao.add(a);   
+        System.out.println("Uma avaliação foi adicionada ...");
+        /*if (s.equals("regular")){
+            efetuarUmaAvaliacao(revisor+1, arquivo)
+        Criar um método para gerarRevisor.. o qual retorna sempre o TOP
+        
+        }*/
+    }
+    
+    public void convidarRevisores(Pessoa p){
+        revisores.add(p);
+        System.out.println("Um revisor foi adicionado ...");
+    }
+    
     
     public Revisao() {
         this.t = new RevisaoPapers();

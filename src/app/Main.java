@@ -20,10 +20,8 @@ public class Main {
 
         Facade f = new Facade();
         f.iniciarRevisao();
-
-        f.addObserver(r);
-        f.notificarTodos();
-        f.iniciarRevisao();
+        
+       
         
        
         

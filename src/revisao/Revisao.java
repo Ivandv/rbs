@@ -30,30 +30,15 @@ public class Revisao implements Subject {
     private ArrayList<Criterios> criterios;
     private Pessoa editor;
     private ArrayList<AvaliacaoDoArquivo> avaliacao;
-    //verificar a necessidade de uma lista de revisores para notifica-los
+    private ArrayList<Pessoa> revisores; //verificar a necessidade de uma lista de revisores para notifica-los
     
     public Revisao() {
         this.t = new RevisaoPapers();
         this.criterios = new ArrayList<>();
         this.avaliacao = new ArrayList<>();
+        this.revisores = new ArrayList<>();
         //inseridos valores para tentar construir o fluxo da revisao
-        p = new Pergunta(1,"O Sentido da vida, do universo e tudo mais");
-        st = new StringDeBusca(1, "Sentido || Vida || UNIVERSO || Sentido do Universo || Sentido da Vida || Existencialismo || 42");
-        Criterios e1 = new Criterios();
-        e1.inserirInclusao("PDF");
-        e1.inserirExclusao("Não Ser uma Poesia Vogon");
-        e1.inserirExclusao("Ser antes da era da camisa de seda e corrente de prata");
-        criterios.add(e1);
-        String name = "Ford Prefect";
-        editor = new Revisor(name) {
-            
-            @Override
-            public void notificar() {
-                System.out.println("Aqui não há ninguém para notificar, cuidado com o leopardo!");
-            }
-        };
-        editor.notificar();
-        //até aqui
+        
     }
 
     public Revisao(Template t) {
@@ -67,12 +52,12 @@ public class Revisao implements Subject {
     @Override
     public void addObserver(Pessoa p) {
         System.out.println("Inserindo novo observador " +p.getNome()+ ".....");
-        
+        this.notificarTodos();
     }
     @Override
     public void removeObserver(Pessoa p) {
         System.out.println("Removendo " + p.getNome()+ "....");
-   
+        this.notificarTodos();
     }
 
     @Override
@@ -151,7 +136,7 @@ public class Revisao implements Subject {
 
     
     public void imprimeDados(){
-        System.out.println("Esta é a revisao de: "+ editor.getNome());
+        System.out.println("Imprimindo Dados da revisão criada ");
     }
 
     

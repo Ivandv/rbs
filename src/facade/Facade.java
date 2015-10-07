@@ -6,7 +6,6 @@
 package facade;
 
 import revisao.Revisao;
-import revisor.Pessoa;
 
 /**
  *
@@ -16,25 +15,13 @@ public class Facade {
 
     Revisao r;
 
-    public void addObserver(Pessoa p) {
-        r.addObserver(p);
-    }
-
-    public void removeObserver(Pessoa p) {
-        r.removeObserver(p);
-    }
-
-    public void notificarTodos() {
-        r.notificarTodos();
-    }
-
     public Facade() {
         ////this.r = r
         r = new Revisao();
     }
 
     public void iniciarRevisao() {
-        System.out.println("Iniciando Revisão pelo sistema de interface");
+        System.out.println("Iniciando Revisão pelo sistema de interface do Façade");
         r = new Revisao();
         r.iniciarRevisao();
         r.notificarTodos();

@@ -33,7 +33,7 @@ public class Main {
        Pessoa rodrigo = new Revisor("Rodrigo");
        
         Revisao revisao = new Revisao();
-        revisao.iniciarRevisao();
+        revisao.iniciarRevisao(ivan);
         
         System.out.println("\n\n:: Vamos convidar algumas pessoas para fazer parte dessa revisão ::");
         revisao.convidarRevisores(juliano);
@@ -48,11 +48,13 @@ public class Main {
         System.out.println("\n\n:: Revisão efetuada.. vamos exibir o resultado dentro do array ::");
         revisao.listarStatusTodasAvaliacoes();
         
-        
-        revisao.notificarTodos();
         revisao.imprimeDados();
-       
-        
+        System.out.println(".........................a partir deste ponto temos o sistema de interface agindo...........");
+        Facade f = new Facade();
+        f.iniciarRevisao(ivan);
+        f.elaborarCriterios();
+        f.elaborarPalavrasChave();
+        f.elaborarBusca();
        
         
         

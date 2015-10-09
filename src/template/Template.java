@@ -5,6 +5,12 @@
  */
 package template;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import parametros.Criterios;
+import parametros.FontesDeBusca;
+import parametros.PalavrasChave;
+import parametros.StringDeBusca;
 import revisor.Pessoa;
 
 /**
@@ -15,8 +21,9 @@ public abstract class Template {
 
     public abstract void hook();
     
-    public void definirPergunta() {
+    public void definirPergunta(String pergunta) {
         System.out.println("Definindo pergunta.......");
+        System.out.println(pergunta);
     }
 
     public void inserirRevisor(Pessoa p) {
@@ -43,8 +50,14 @@ public abstract class Template {
         System.out.println("Definindo Critérios de Inclusão e Exclusão....");
     }
 
-    public void gerarBusca() {
+    public void gerarBusca(StringDeBusca s, ArrayList<FontesDeBusca> fontes) {
         System.out.println("Gerando Busca de Estudos......");
+        System.out.println(s);
+        for(FontesDeBusca f : fontes){
+            if(f.getDescricao() != null)
+            System.out.println(f.getDescricao());
+        }
+        this.atribuirEstudos();
     }
 
     public void atribuirEstudos() {
@@ -56,10 +69,11 @@ public abstract class Template {
     }
 
     public final void iniciarRevisao() {
-//        System.out.println("Iniciando Revisão Sistemática.....");
-        definirCriterios();
-        atribuirEstudos();
-        avaliarEstudos();
+        String s = JOptionPane.showInputDialog("Informe a pergunta");
+        this.definirConfiguracoes();
+        this.definirPergunta(s);
+        definirFontesDisponiveis();
+        this.preencherCredenciais();
         hook();
     }
 

@@ -6,13 +6,14 @@
 package facade;
 
 import revisao.Revisao;
+import revisor.Pessoa;
 
 /**
  *
  * @author Ivan
  */
 public class Facade {
-
+    Pessoa p;
     Revisao r;
 
     public Facade() {
@@ -20,13 +21,23 @@ public class Facade {
         r = new Revisao();
     }
 
-    public void iniciarRevisao() {
-        System.out.println("Iniciando Revisão pelo sistema de interface do Façade");
-        r = new Revisao();
-        r.iniciarRevisao();
-        r.notificarTodos();
-        r.imprimeDados();
-
+    public void iniciarRevisao(Pessoa p) {
+        System.out.println("Iniciando Revisão pelo sistema de interface do Facade");
+        r.iniciarRevisao(p);
     }
-
+    
+    public void elaborarCriterios(){
+        System.out.println("Elaborando a etapa de definição de critérios pelo sistema de interface facade");
+        r.definiCriterios();
+    }
+    
+    public void elaborarPalavrasChave(){
+        System.out.println("Elaborando etapa de escolha da palavras-chave pelo sistema de interface facade");
+        r.definirPalavrasChave();
+    }
+    
+    public void elaborarBusca(){
+        System.out.println("Elaborando o processo de montagem da busca pelo sistema de interface facade.....");
+        r.efetuarBusca();
+    }
 }

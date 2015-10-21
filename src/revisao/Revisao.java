@@ -60,7 +60,7 @@ public class Revisao implements Subject {
     }
 
     
-    public void definiCriterios(){
+    public void definirCriterios(){
         System.out.println("Delegando Definição de critérios pela estrutura do template..............");
         t.definirCriterios();
         this.notificarTodos();

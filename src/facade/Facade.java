@@ -28,7 +28,7 @@ public class Facade {
     
     public void elaborarCriterios(){
         System.out.println("Elaborando a etapa de definição de critérios pelo sistema de interface facade");
-        r.definiCriterios();
+        r.definirCriterios();
     }
     
     public void elaborarPalavrasChave(){

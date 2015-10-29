@@ -39,5 +39,6 @@ public class Facade {
     public void elaborarBusca(){
         System.out.println("Elaborando o processo de montagem da busca pelo sistema de interface facade.....");
         r.efetuarBusca();
+        r.notificarTodos();
     }
 }

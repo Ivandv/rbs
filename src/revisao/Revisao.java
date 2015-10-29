@@ -35,6 +35,7 @@ public class Revisao implements Subject {
     private ArrayList<AvaliacaoDoArquivo> avaliacao;
     private ArrayList<Pessoa> revisores; //verificar a necessidade de uma lista de revisores para notifica-los
     private ArrayList<FontesDeBusca> fontes;
+    
     public Revisao() {
         this.t = new RevisaoPapers();
         this.criterios = new ArrayList<>();
@@ -51,20 +52,18 @@ public class Revisao implements Subject {
 
     public void iniciarRevisao(Pessoa editor) {
         this.editor = editor;
-        t.iniciarRevisao();
+        t.iniciarRevisao();        
         String nome = JOptionPane.showInputDialog("Informe o nome do revisor que será inserito");
         Revisor revisor = new Revisor(nome);
         this.convidarRevisores(revisor);
-        
+        this.notificarTodos();
 
     }
 
-    
     public void definirCriterios(){
         System.out.println("Delegando Definição de critérios pela estrutura do template..............");
         t.definirCriterios();
-        this.notificarTodos();
-        
+        this.notificarTodos();        
     }
     
     public void definirPalavrasChave(){
@@ -73,18 +72,15 @@ public class Revisao implements Subject {
         this.notificarTodos();
     }
 
-    
     public void efetuarBusca(){
         System.out.println("Delegando busca para a estrutura template");
         t.gerarBusca(st, fontes);
-        this.notificarTodos();
     }
     
     public void listarStatusTodasAvaliacoes() {
         for (AvaliacaoDoArquivo a : avaliacao) {
             System.out.println(a);
         }
-
     }
 
     public String efetuarUmaAvaliacao(Pessoa revisor, ArquivoDoEstudo arquivo) {
@@ -98,11 +94,6 @@ public class Revisao implements Subject {
         AvaliacaoDoArquivo a = new AvaliacaoDoArquivo(revisor, arquivo, s);
         avaliacao.add(a);
         System.out.println("Uma avaliação foi adicionada ...");
-        /*if (s.equals("regular")){
-         efetuarUmaAvaliacao(revisor+1, arquivo)
-         Criar um método para gerarRevisor.. o qual retorna sempre o TOP
-        
-         }*/
     }
 
     public boolean convidarRevisores(Pessoa convidado) {

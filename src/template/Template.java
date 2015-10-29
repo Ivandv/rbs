@@ -52,7 +52,9 @@ public abstract class Template {
 
     public void gerarBusca(StringDeBusca s, ArrayList<FontesDeBusca> fontes) {
         System.out.println("Gerando Busca de Estudos......");
-        System.out.println(s);
+        if (s != null){
+        System.out.println("String de Busca: "+s);
+        }
         for(FontesDeBusca f : fontes){
             if(f.getDescricao() != null)
             System.out.println(f.getDescricao());
